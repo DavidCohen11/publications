@@ -492,7 +492,7 @@ $( function() {
                     points+=1000;
                     break;
                 }else{   
-                
+                /*
                 patterns=["XXXX#","#XXXX"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=true;
@@ -522,7 +522,7 @@ $( function() {
                     points+=1000;
                     break;
                 }else{
-
+                */
                 patterns=["XXXX"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=true;
@@ -723,7 +723,7 @@ $( function() {
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
                     points+=-20;
-                }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+                }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
             
             }
             console.log("POINTS"+points)
