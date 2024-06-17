@@ -79,7 +79,7 @@ $( function() {
                         self.board=self.buildBoard();
                         let temp=self.board;
                         let minMouve=new Mouve(-1,-1);
-                        if((self.game.players.get("X").first_turn)&&(self.game.first==="X")){
+                        if(self.game.players.get("X").first_turn){
                             let value="";
                             let col=-1;
                             let line=-1;
