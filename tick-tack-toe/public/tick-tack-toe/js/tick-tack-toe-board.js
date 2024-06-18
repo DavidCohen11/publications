@@ -79,8 +79,27 @@ $( function() {
                     if(!self.game.over){
                         self.board=self.buildBoard();
                         let temp=self.board;
-
-                        minMouve=self.findBestMouve(temp);        
+                        let minMouve=new Mouve(-1,-1);
+                        if((self.game.players.get("X").first_turn)&&(self.nbrSeq>3)){
+                            let value="";
+                            let possibleMouves=[];
+                            for(col=0;col<self.nbrSeq;col++){
+                                for(line=0;line<self.nbrSeq;line++){
+                                    if(Math.abs(col-line)===2){
+                                        possibleMouves.push(new Mouve(col,line));
+                                    }
+                                }
+                            }
+                            let mv=new Mouve(-1,-1);
+                            do{
+                                mv=possibleMouves[Math.floor(Math.random()*possibleMouves.length)];
+                                value=$("#elem_"+mv.col+"_"+mv.line).ttt_element("getValue");
+                            }while((value==="X")||(value==="O"))   
+                            minMouve.col=mv.col;
+                            minMouve.line=mv.line;    
+                        }else{
+                            minMouve=self.findBestMouve(temp); 
+                        } 
                         self.board.set("elem_"+minMouve.col+"_"+minMouve.line,"X");
                         $("#elem_"+minMouve.col+"_"+minMouve.line).ttt_element("setValue","X");
                         $("#elem_"+minMouve.col+"_"+minMouve.line).ttt_element("build");
@@ -147,32 +166,7 @@ $( function() {
                     } 
                 }
             }    
-            /*
-            self.board.set("elem_"+2+"_"+0,"X");
-            $("#elem_"+2+"_"+0).ttt_element("setValue","O");
-            $("#elem_"+2+"_"+0).ttt_element("build");
             
-            self.board.set("elem_"+0+"_"+1,"O");
-            $("#elem_"+0+"_"+1).ttt_element("setValue","X");
-            $("#elem_"+0+"_"+1).ttt_element("build");
-            
-            self.board.set("elem_"+1+"_"+1,"X");
-            $("#elem_"+1+"_"+1).ttt_element("setValue","X");
-            $("#elem_"+1+"_"+1).ttt_element("build");
-            
-            self.board.set("elem_"+2+"_"+2,"O");
-            $("#elem_"+2+"_"+2).ttt_element("setValue","O");
-            $("#elem_"+2+"_"+2).ttt_element("build");
-            
-            self.board.set("elem_"+0+"_"+2,"O");
-            $("#elem_"+0+"_"+2).ttt_element("setValue","O");
-            $("#elem_"+0+"_"+2).ttt_element("build");
-            /*
-            self.board.set("elem_"+2+"_"+1,"X");
-            $("#elem_"+2+"_"+1).ttt_element("setValue","X");
-            $("#elem_"+2+"_"+1).ttt_element("build");
-            */
-           exit();
         },
 
         playO: function(){
@@ -204,7 +198,7 @@ $( function() {
             let mouves=self.possibleMouves(board);
             for(let mv in mouves){
                 self.setBoard(board,mouves[mv],"X");
-                let score=self.minMax(board,true,2);
+                let score=self.getScore(board,true,2);
                 if (score < bestScore) {
                   bestScore = score;
                   bestMove = mouves[mv];
@@ -229,14 +223,15 @@ $( function() {
             }
             return mouves;
         },
-        minMax: function(board,isMaximizing,depth){
+
+
+        getScore: function(board,isMaximizing,depth){
             let self=this;
             depth--;
-            let points=self.eval(board);
             if(self.game.over){
-                return points;
+                return self.eval(board);
             }else if(depth===0){
-                return points;
+                return self.eval(board);
             }else{    
                 if(isMaximizing){
                     let bestScore=-Infinity;
@@ -244,7 +239,8 @@ $( function() {
                     for(let mv in mouves){
                         let mouve=mouves[mv];
                         self.setBoard(board,mouve,"O");
-                        let score=self.minMax(board,false,depth);
+                        let score=self.eval(board);
+                        score+=self.getScore(board,false,depth);
                         self.setBoard(board,mouve,"");
                         if(score > bestScore){
                             bestScore=score;
@@ -257,7 +253,8 @@ $( function() {
                     for(let mv in mouves){
                         let mouve=mouves[mv];
                         self.setBoard(board,mouve,"X");
-                        let score=self.minMax(board,true,depth);
+                        let score=self.eval(board);
+                        score+=self.getScore(board,false,depth);
                         self.setBoard(board,mouve,"");
                         if(score < bestScore){
                             bestScore=score;
@@ -267,7 +264,7 @@ $( function() {
                     return bestScore;
                 }      
             }  
-            
+
         },
         
         setBoard(board,mouve,value){
@@ -670,37 +667,36 @@ $( function() {
                 patterns=["XOX"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=100;
+                    points+=150
                 }
                 patterns=["OXO"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=-100;
+                    points+=-150;
                 }
                 patterns=["XXO","OXX"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=100;
+                    points+=120;
                 }
                 patterns=["OOX","XOO"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=-100;
+                    points+=-120;
                 }
 
-                patterns=["#XO","OX#","XO#","#OX"];
+                patterns=["#XO","OX#","XO#"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=-80;
+                    points+=-120;
                 }
-                patterns=["#OX","XO#","OX#","#XO"];
+                patterns=["#OX","XO#","OX#"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=80;
+                    points+=100;
                 }
             
             }
-            console.log("POINTS"+points)
            if(self.filled(board)){
                 self.game.over=true;
             }else{
