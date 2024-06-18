@@ -685,12 +685,12 @@ $( function() {
                     points+=-120;
                 }
 
-                patterns=["#XO","OX#","XO#"];
+                patterns=["#XO","OX#"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=-120;
+                    points+=-100;
                 }
-                patterns=["#OX","XO#","OX#"];
+                patterns=["#OX","XO#"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
                     points+=100;
