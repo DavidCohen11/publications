@@ -1,3 +1,4 @@
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -680,22 +681,22 @@ $( function() {
                 patterns=["XOX"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=60;
+                    points+=150;
                 }
                 patterns=["OXO"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=-60;
+                    points+=-150;
                 }
                 patterns=["XXO","OXX"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=50;
+                    points+=150;
                 }
                 patterns=["OOX","XOO"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=-50;
+                    points+=-150;
                 }
             
             }
