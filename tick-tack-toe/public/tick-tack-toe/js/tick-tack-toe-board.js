@@ -79,6 +79,7 @@ $( function() {
                     if(!self.game.over){
                         self.board=self.buildBoard();
                         let temp=self.board;
+
                         minMouve=self.findBestMouve(temp);        
                         self.board.set("elem_"+minMouve.col+"_"+minMouve.line,"X");
                         $("#elem_"+minMouve.col+"_"+minMouve.line).ttt_element("setValue","X");
@@ -580,6 +581,7 @@ $( function() {
                     self.game.over=false;
                     points+=-30;
                 }
+                
                 patterns=["##X##"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
@@ -590,7 +592,7 @@ $( function() {
                     self.game.over=false;
                     points+=30;
                 }             
-            
+                
                 patterns=["X#XX","XX#X"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
@@ -664,25 +666,37 @@ $( function() {
                     self.game.over=false;
                     points+=60;
                 }
+
                 patterns=["XOX"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=200;
+                    points+=100;
                 }
                 patterns=["OXO"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=-200;
+                    points+=-100;
                 }
                 patterns=["XXO","OXX"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=200;
+                    points+=100;
                 }
                 patterns=["OOX","XOO"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
-                    points+=-200;
+                    points+=-100;
+                }
+
+                patterns=["#XO","OX#"];
+                if(patterns.includes(self.pathSum(paths[path]))){
+                    self.game.over=false;
+                    points+=-80;
+                }
+                patterns=["#OX","XO#"];
+                if(patterns.includes(self.pathSum(paths[path]))){
+                    self.game.over=false;
+                    points+=80;
                 }
             
             }
