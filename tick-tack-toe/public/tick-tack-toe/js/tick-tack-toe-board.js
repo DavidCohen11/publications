@@ -684,17 +684,18 @@ $( function() {
                     self.game.over=false;
                     points+=-120;
                 }
-
-                patterns=["#XO","OX#"];
-                if(patterns.includes(self.pathSum(paths[path]))){
-                    self.game.over=false;
-                    points+=-100;
-                }
-                patterns=["#OX","XO#"];
-                if(patterns.includes(self.pathSum(paths[path]))){
-                    self.game.over=false;
-                    points+=100;
-                }
+                if(self.nbrSeq>3){
+                    patterns=["#XO","OX#"];
+                    if(patterns.includes(self.pathSum(paths[path]))){
+                        self.game.over=false;
+                        points+=-100;
+                    }
+                    patterns=["#OX","XO#"];
+                    if(patterns.includes(self.pathSum(paths[path]))){
+                        self.game.over=false;
+                        points+=100;
+                    }
+                }    
             
             }
            if(self.filled(board)){
