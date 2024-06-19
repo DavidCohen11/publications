@@ -506,7 +506,39 @@ $( function() {
                     points+=1000;
                     break;
                 } 
-                
+                patterns=["XXXO#","#OXXX"];
+                if(patterns.includes(self.pathSum(paths[path]))){
+                    self.game.over=false;
+                    points+=150;
+                }
+                patterns=["OOOX#","#XOOO"];
+                if(patterns.includes(self.pathSum(paths[path]))){
+                    self.game.over=false;
+                    points+=-150;
+                } 
+
+                patterns=["XXX#O","O#XXX"];
+                if(patterns.includes(self.pathSum(paths[path]))){
+                    self.game.over=false;
+                    points+=120;
+                }
+                patterns=["OOO#X","X#OOO"];
+                if(patterns.includes(self.pathSum(paths[path]))){
+                    self.game.over=false;
+                    points+=-120;
+                } 
+
+                patterns=["XXXXO","OXXXX"];
+                if(patterns.includes(self.pathSum(paths[path]))){
+                    self.game.over=false;
+                    points+=100;
+                }
+                patterns=["OOOOX","XOOOO"];
+                if(patterns.includes(self.pathSum(paths[path]))){
+                    self.game.over=false;
+                    points+=-100;
+                } 
+
                 patterns=["#XXX#"];
                 if(patterns.includes(self.pathSum(paths[path]))){
                     self.game.over=false;
