@@ -435,28 +435,28 @@ $( function() {
                 if(patterns.includes(paths[path])){
                     self.game.over=true;
                     self.game.winner="X";
-                    points+=-1000;
+                    points+=-1500;
                     break;
                 }
                 patterns=["OOOOO"];
                 if(patterns.includes(paths[path])){
                     self.game.over=true;
                     self.game.winner="O";
-                    points+=1000;
+                    points+=1500;
                     break;
                 }   
                 patterns=["XXXX"];
                 if(patterns.includes(paths[path])){
                     self.game.over=true;
                     self.game.winner="X";
-                    points+=-1000;
+                    points+=-1500;
                     break;
                 }
                 patterns=["OOOO"];
                 if(patterns.includes(paths[path])){
                     self.game.over=true;
                     self.game.winner="O";
-                    points+=1000;
+                    points+=1500;
                     break;
                 }  
                     
@@ -464,14 +464,14 @@ $( function() {
                 if(patterns.includes(paths[path])){
                     self.game.over=true;
                     self.game.winner="X";
-                    points+=-1000;
+                    points+=-1500;
                     break;
                 }
                 patterns=["OOO"];
                 if(patterns.includes(paths[path])){
                     self.game.over=true;
                     self.game.winner="O";
-                    points+=1000;
+                    points+=1500;
                     break;
                 }
 
@@ -492,7 +492,7 @@ $( function() {
                 patterns=["#OX","XO#","OX#","#XO","X#O","O#X"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-30*bonusPath3;
+                    points+=-150*bonusPath3;
                     
                 }
 
@@ -506,14 +506,14 @@ $( function() {
                 patterns=["XX#","#XX"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-40*bonusPath3;
+                    points+=-50*bonusPath3;
                     
                 }
 
                 patterns=["##X","X##","#X#"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-30*bonusPath3;
+                    points+=-50*bonusPath3;
                     
                 }
           
@@ -527,7 +527,7 @@ $( function() {
                 patterns=["XOOO","OOOX"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-180*bonusPath4;
+                    points+=-150*bonusPath4;
                     
                 } 
 
@@ -541,14 +541,14 @@ $( function() {
                 patterns=["XXX#","#XXX"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-40*bonusPath4;
+                    points+=-50*bonusPath4;
                     
                 }
 
                 patterns=["OOOOX","XOOOO","OOO#X","X#OOO","OOOX#","#XOOO"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-200*bonusPath5;
+                    points+=-150*bonusPath5;
                     
                 }   
                 
@@ -556,41 +556,41 @@ $( function() {
                 patterns=["#OXO#","#OX##","##XO#"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-120*bonusPath5;
+                    points+=-150*bonusPath5;
                     
                 }
                 patterns=["#OOX#","#XOO#"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-100*bonusPath5;
+                    points+=-150*bonusPath5;
                     
                 }
 
                 patterns=["#OX#O","O#XO#","OXO#O","O#OXO"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-90*bonusPath5;
+                    points+=-150*bonusPath5;
                     
                 }   
     
                 patterns=["##XOO","OOX##","X###O","O###X"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-80*bonusPath5;
+                    points+=-150*bonusPath5;
                     
                 }
                 
                 patterns=["#XXX#"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-60*bonusPath5;
+                    points+=-50*bonusPath5;
                     
                 }
 
                 patterns=["X###X"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-100*bonusPath5;
+                    points+=-50*bonusPath5;
                     
                 } 
 
@@ -604,14 +604,14 @@ $( function() {
                 patterns=["#XX##","##XX#"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-40*bonusPath5;
+                    points+=-50*bonusPath5;
                     
                 }
 
                 patterns=["##X##"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-30*bonusPath5;
+                    points+=-50*bonusPath5;
                     
                 }           
                 
