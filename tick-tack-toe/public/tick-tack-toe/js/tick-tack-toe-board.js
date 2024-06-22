@@ -342,11 +342,11 @@ $( function() {
                 }
             }
             paths.push(value);
-            if(self.nbrSeq==="5"){
+            if(self.nbrSeq>=5){
                 value="";
                 for(let col=0;col<self.nbrSeq;col++){
                     for(let line=0;line<self.nbrSeq;line++){
-                        if(col+line===6){
+                        if(col+line===self.nbrSeq){
                             let item=board.get("elem_"+col+"_"+line);
                             value+=(item==="" ? "#" : item);
                         }
@@ -416,7 +416,7 @@ $( function() {
                 value="";                
                 for(let col=0;col<self.nbrSeq;col++){
                     for(let line=0;line<self.nbrSeq;line++){
-                    if(col+line===5){
+                    if(col+line===self.nbrSeq){
                             let item=board.get("elem_"+col+"_"+line);
                             value+=(item==="" ? "#" : item);
                         }
@@ -527,7 +527,7 @@ $( function() {
                 patterns=["XOOO","OOOX"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-150*bonusPath4;
+                    points+=-180*bonusPath4;
                     
                 } 
 
@@ -548,7 +548,7 @@ $( function() {
                 patterns=["OOOOX","XOOOO","OOO#X","X#OOO","OOOX#","#XOOO"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-150*bonusPath5;
+                    points+=-200*bonusPath5;
                     
                 }   
                 
