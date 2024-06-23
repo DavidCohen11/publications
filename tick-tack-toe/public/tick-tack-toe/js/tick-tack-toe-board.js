@@ -478,7 +478,7 @@ $( function() {
                 patterns=["OXO"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-150*bonusPath3;
+                    points+=-180*bonusPath3;
                     
                 }
 
@@ -524,10 +524,10 @@ $( function() {
                     
                 }
                           
-                patterns=["XOOO","OOOX"];
+                patterns=["XOOO","OOOX","OOXO","OXOO"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
-                    points+=-150*bonusPath4;
+                    points+=-180*bonusPath4;
                     
                 } 
 
@@ -545,7 +545,7 @@ $( function() {
                     
                 }
 
-                patterns=["OOOOX","XOOOO","OOO#X","X#OOO","OOOX#","#XOOO"];
+                patterns=["OOOOX","XOOOO","OOO#X","X#OOO","OOOX#","#XOOO","OOOXO","OXOOO","OOXOO"];
                 if(patterns.includes(paths[path])){
                     self.game.over=false;
                     points+=-150*bonusPath5;
